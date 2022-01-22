@@ -1,10 +1,10 @@
 import express from 'express'
-import { validator, checker } from '../Middleware/middle'
+import { validator0, validator1, validator2,  checker } from '../Middleware/middle'
 import path from 'path'
 
 const router = express.Router()
 
-const middle = [validator, checker]
+const middle = [validator0, validator1, validator2, checker]
 
 router.use(middle)
 
@@ -14,7 +14,7 @@ router.get(
   (
     req: { query: { width: string; height: string; filename: string } },
     res: { sendFile: (arg0: string) => void }
-  ) => {
+  ) : void => {
     const w: number = Number(req.query.width)
     const h: number = Number(req.query.height)
     const fileName: string = req.query.filename as string

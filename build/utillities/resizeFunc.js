@@ -55,7 +55,7 @@ var resize = function (fileName, width, height) { return __awaiter(void 0, void 
                 return [2 /*return*/, "resizedImages/".concat(fileName + '_' + width + '_' + height, ".jpg")];
             case 2:
                 _a = _b.sent();
-                return [2 /*return*/, false];
+                return [2 /*return*/, ""];
             case 3: return [2 /*return*/];
         }
     });
