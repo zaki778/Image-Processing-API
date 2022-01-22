@@ -17,8 +17,7 @@ const validator = (
         res.render('error', { message: 'error!' })
       }
     } catch {
-      console.log(err)
-      res.render('error')
+      res.render('error', { message: err })
     }
   })
 }
@@ -27,7 +26,7 @@ const checker = (
   req: express.Request,
   res: express.Response,
   next: Function
-) => {
+) : void => {
   const w: number = Number(req.query.width)
   const h: number = Number(req.query.height)
   const fileName: string = req.query.filename as string
@@ -36,21 +35,14 @@ const checker = (
   fileExists(`resizedImages/${completedFileName}.jpg`, (err, exists) => {
     try {
       if (exists) {
-        console.log('checker try if')
-        console.log('---------------')
-
         next()
       } else {
-        console.log('checker try else')
-        console.log('---------------')
-
         resize(fileName, w, h).then(() => {
           next()
         })
       }
     } catch {
-      console.log(err)
-      res.render('error')
+      res.render('error', { message: err })
     }
   })
 }

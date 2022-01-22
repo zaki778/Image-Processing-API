@@ -12,7 +12,7 @@ router.get(
   '/',
   middle,
   (
-    req: { query: { width: any; height: any; filename: string } },
+    req: { query: { width: string; height: string; filename: string } },
     res: { sendFile: (arg0: string) => void }
   ) => {
     const w: number = Number(req.query.width)
